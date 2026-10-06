@@ -1,4 +1,37 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Outfit:wght@400;500;600;700&display=swap');
 
-body { margin: 0; font-family: system-ui, sans-serif;
-color: #1b232d; }
+:root {
+  --font-ui: 'Outfit', system-ui, sans-serif;
+  --font-display: 'Fraunces', Georgia, serif;
+  --ink: #15202b;
+  --bg: #f3f0ea;
+  --surface: #fffcf7;
+  --border: #e2ddd4;
+  --muted: #6b7280;
+  --accent: #1a6b5c;
+  --accent-hover: #145247;
+  --price: #c45c26;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-ui);
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse 80% 50% at 10% -10%, rgba(26, 107, 92, 0.08), transparent),
+    radial-gradient(ellipse 60% 40% at 100% 0%, rgba(196, 92, 38, 0.06), transparent),
+    var(--bg);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input {
+  font-family: inherit;
+}

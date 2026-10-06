@@ -1,4 +1,90 @@
-.entete { display: flex; justify-content: space-between;
-padding: 14px 24px; background: #1b232d; }
-.entete a { color: #fff; text-decoration: none; }
-main { max-width: 900px; margin: 0 auto; padding: 24px; }
+.entete {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.9rem 1.75rem;
+  background: var(--ink);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.18);
+}
+
+.marque {
+  text-decoration: none;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+  display: flex;
+  gap: 0.35rem;
+  align-items: baseline;
+}
+
+.marque-pleine {
+  font-weight: 700;
+}
+
+.marque-page {
+  font-weight: 400;
+  opacity: 0.85;
+  font-style: italic;
+}
+
+.nav {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.nav a {
+  color: rgba(255, 255, 255, 0.78);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.15s;
+}
+
+.nav a:hover,
+.nav a.actif {
+  color: #fff;
+}
+
+.panier-lien {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  position: relative;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.35rem;
+  height: 1.35rem;
+  padding: 0 0.35rem;
+  background: var(--price);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 999px;
+  animation: pop 0.3s ease;
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 3.5rem;
+}

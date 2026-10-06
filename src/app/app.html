@@ -1,7 +1,18 @@
 <header class="entete">
-<a routerLink="/"><b>Pleine</b> Page</a>
-<a routerLink="/">Catalogue</a>
+  <a routerLink="/" class="marque">
+    <span class="marque-pleine">Pleine</span>
+    <span class="marque-page">Page</span>
+  </a>
+  <nav class="nav">
+    <a routerLink="/" routerLinkActive="actif" [routerLinkActiveOptions]="{ exact: true }">Catalogue</a>
+    <a routerLink="/panier" routerLinkActive="actif" class="panier-lien">
+      Panier
+      @if (panier.totalArticles() > 0) {
+        <span class="badge">{{ panier.totalArticles() }}</span>
+      }
+    </a>
+  </nav>
 </header>
 <main>
-<router-outlet />
+  <router-outlet />
 </main>

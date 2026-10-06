@@ -1,20 +1,90 @@
 @if (livre(); as l) {
-    <div class="livre">
-        <div class="couv">{{ l.titre }}</div>
-        <div class="infos">
-            <h1>{{ l.titre }}</h1>
-            <p>par {{ l.auteur }}</p>
-            <p class="prix">{{ l.prix }} €</p>
-            <button [disabled]="ajoute()" (click)="ajouter()">
-                {{ ajoute() ? 'Ajouté' : 'Ajouter au panier' }}</button>
+  <article class="fiche">
+    <div
+      class="scene"
+      (mousemove)="surSouris($event)"
+      (mouseleave)="resetTilt()"
+    >
+      <div
+        class="livre-3d"
+        [style.--c]="l.couleur"
+        [style.--a]="l.accent"
+        [style.transform]="
+          'rotateX(' + tiltX() + 'deg) rotateY(' + tiltY() + 'deg)'
+        "
+      >
+        <div class="tranche"></div>
+        <div class="pages"></div>
+        <div
+          class="couv"
+          [style.--sx]="shineX() + '%'"
+          [style.--sy]="shineY() + '%'"
+        >
+          <span class="couv-titre">{{ l.titre }}</span>
+          <span class="couv-auteur">{{ l.auteur }}</span>
         </div>
+      </div>
+      <p class="indice">Bougez le curseur sur le livre</p>
     </div>
+
+    <div class="infos">
+      <p class="fil">
+        <a routerLink="/">Catalogue</a>
+        <span>/</span>
+        <span>{{ l.titre }}</span>
+      </p>
+      <h1>{{ l.titre }}</h1>
+      <p class="par">par <strong>{{ l.auteur }}</strong></p>
+      <p class="prix">{{ l.prix | currency: 'EUR':'symbol':'1.2-2':'fr' }}</p>
+      <p class="resume">{{ l.resume }}</p>
+
+      <div class="actions">
+        <div class="qte" aria-label="Quantité">
+          <button type="button" (click)="diminuerQte()" aria-label="Diminuer">−</button>
+          <span>{{ quantite() }}</span>
+          <button type="button" (click)="augmenterQte()" aria-label="Augmenter">+</button>
+        </div>
+        <button type="button" class="ajouter" (click)="ajouter()">
+          @if (feedback()) {
+            Ajouté ✓
+          } @else {
+            Ajouter au panier
+          }
+        </button>
+      </div>
+
+      @if (dejaDansPanier() > 0) {
+        <p class="deja">
+          {{ dejaDansPanier() }} exemplaire(s) dans
+          <a routerLink="/panier">votre panier</a>
+          — vous pouvez en ajouter encore.
+        </p>
+      }
+    </div>
+  </article>
+
+  <section class="suggestions-bloc">
     <h2>Vous aimerez aussi</h2>
     <div class="suggestions">
-        @for (s of suggestions(); track s.id) {
-            <a [routerLink]="['/livre', s.id]">{{ s.titre }}</a>
-        }
+      @for (s of suggestions(); track s.id) {
+        <a
+          class="sugg"
+          [routerLink]="['/livre', s.id]"
+          [style.--c]="s.couleur"
+          [style.--a]="s.accent"
+        >
+          <div class="sugg-couv">
+            <span>{{ s.titre }}</span>
+          </div>
+          <p class="sugg-titre">{{ s.titre }}</p>
+          <p class="sugg-prix">{{ s.prix | currency: 'EUR':'symbol':'1.2-2':'fr' }}</p>
+        </a>
+      }
     </div>
+  </section>
+} @else if (livresService.livres().length === 0) {
+  <p class="chargement">Chargement…</p>
 } @else {
-    <p>Ce livre n'existe pas.</p>
+  <p class="introuvable">Ce livre n'existe pas.</p>
+  <a routerLink="/" class="retour">Retour au catalogue</a>
 }

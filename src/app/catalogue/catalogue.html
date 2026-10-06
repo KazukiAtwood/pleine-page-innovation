@@ -1,9 +1,50 @@
-<h1>Catalogue</h1>
-<input placeholder="Filtrer par auteur"
-    (input)="filtre.set($any($event.target).value)">
-<p>{{ resultats().length }} livre(s)</p>
-<ul>
-    @for (l of resultats(); track l.id) {
-        <li><a [routerLink]="['/livre', l.id]">{{ l.titre }}</a>, {{ l.auteur }}, {{ l.prix }} €</li>
-    }
-</ul>
+<section class="catalogue">
+  <header class="intro">
+    <h1>Catalogue</h1>
+    <p class="sous-titre">Découvrez notre sélection littéraire</p>
+  </header>
+
+  <div class="toolbar">
+    <label class="recherche">
+      <span class="sr-only">Rechercher</span>
+      <input
+        type="search"
+        placeholder="Rechercher un titre ou un auteur…"
+        [value]="filtre()"
+        (input)="filtre.set($any($event.target).value)"
+      />
+    </label>
+    <p class="compte">{{ resultats().length }} livre(s)</p>
+  </div>
+
+  @if (livres().length === 0) {
+    <p class="chargement">Chargement du catalogue…</p>
+  } @else if (resultats().length === 0) {
+    <p class="vide">Aucun livre ne correspond à votre recherche.</p>
+  } @else {
+    <div class="grille">
+      @for (l of resultats(); track l.id; let i = $index) {
+        <a
+          class="carte"
+          [routerLink]="['/livre', l.id]"
+          [style.--delay]="i * 40 + 'ms'"
+          [style.--c]="l.couleur"
+          [style.--a]="l.accent"
+        >
+          <div class="couverture" aria-hidden="true">
+            <div class="tranche"></div>
+            <div class="face">
+              <span class="face-titre">{{ l.titre }}</span>
+              <span class="face-auteur">{{ l.auteur }}</span>
+            </div>
+          </div>
+          <div class="infos">
+            <h2 class="titre">{{ l.titre }}</h2>
+            <p class="auteur">{{ l.auteur }}</p>
+            <p class="prix">{{ l.prix | currency: 'EUR':'symbol':'1.2-2':'fr' }}</p>
+          </div>
+        </a>
+      }
+    </div>
+  }
+</section>

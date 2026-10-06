@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1000,
+    "titre": "Les lointains veilleurs",
+    "auteur": "Yann Ferrand",
+    "prix": 18.84,
+    "couleur": "#2c4a6e",
+    "accent": "#c4a35a",
+    "resume": "Une odyssée littéraire où les veilleurs observent les confins du monde. Un roman d'atmosphère, suspendu entre mémoire et horizon."
+  },
+  {
+    "id": 1001,
+    "titre": "Les clairs veilleurs",
+    "auteur": "Camille Baddou",
+    "prix": 18.41,
+    "couleur": "#3d5c4a",
+    "accent": "#e8d5a3",
+    "resume": "Sous une lumière presque trop vive, des personnages cherchent à démêler le vrai du reflet. Une prose lumineuse et précise."
+  },
+  {
+    "id": 1002,
+    "titre": "Les perdus rivages",
+    "auteur": "Camille Sorel",
+    "prix": 24.54,
+    "couleur": "#6b3a3a",
+    "accent": "#d4a574",
+    "resume": "Sur des rivages oubliés, une famille reconstitue son histoire. Un récit maritime, tendu et profondément humain."
+  },
+  {
+    "id": 1003,
+    "titre": "Les perdus veilleurs",
+    "auteur": "Ines Ngassa",
+    "prix": 21.89,
+    "couleur": "#4a3d6b",
+    "accent": "#b8a9d4",
+    "resume": "Quand les veilleurs eux-mêmes se perdent, le monde bascule. Un thriller intimiste aux frontières du fantastique."
+  },
+  {
+    "id": 1004,
+    "titre": "Les vrais carnets",
+    "auteur": "Awa Klein",
+    "prix": 19.01,
+    "couleur": "#1e4d4a",
+    "accent": "#7ec8c0",
+    "resume": "Des carnets retrouvés racontent une vie en fragments. Une exploration sensible de l'écriture et du souvenir."
+  },
+  {
+    "id": 1005,
+    "titre": "Les clairs carnets",
+    "auteur": "Awa Ferrand",
+    "prix": 20.97,
+    "couleur": "#8b4513",
+    "accent": "#f0c987",
+    "resume": "Entre clarté et ombre, des pages annotées révèlent un secret de famille. Un roman élégant et captivant."
+  },
+  {
+    "id": 1006,
+    "titre": "Les lointains jardins",
+    "auteur": "Ines Roux",
+    "prix": 12.8,
+    "couleur": "#2d5a27",
+    "accent": "#a8d08d",
+    "resume": "Un jardin inaccessible devient le cœur d'une quête personnelle. Une fable douce sur le temps qui passe."
+  },
+  {
+    "id": 1007,
+    "titre": "Les vrais rivages",
+    "auteur": "Elodie Lefebvre",
+    "prix": 18.86,
+    "couleur": "#1a3a5c",
+    "accent": "#9ec5e8",
+    "resume": "Face à la mer, deux destins se croisent. Un roman contemporain sur l'appartenance et le départ."
+  }
+]

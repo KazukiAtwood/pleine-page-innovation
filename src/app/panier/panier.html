@@ -1,0 +1,48 @@
+<section class="panier-page">
+  <h1>Mon panier</h1>
+
+  @if (panier.totalArticles() === 0) {
+    <div class="vide">
+      <p>Votre panier est vide.</p>
+      <a routerLink="/" class="btn-lien">Parcourir le catalogue</a>
+    </div>
+  } @else {
+    <p class="resume-haut">{{ panier.totalArticles() }} article(s)</p>
+
+    <ul class="lignes">
+      @for (ligne of panier.lignes(); track ligne.id) {
+        @if (ligne.livre; as l) {
+          <li class="ligne">
+            <a [routerLink]="['/livre', l.id]" class="mini-couv" [style.--c]="l.couleur" [style.--a]="l.accent">
+              <span>{{ l.titre }}</span>
+            </a>
+            <div class="meta">
+              <a [routerLink]="['/livre', l.id]" class="titre">{{ l.titre }}</a>
+              <p class="auteur">{{ l.auteur }}</p>
+              <p class="prix-u">{{ l.prix | currency: 'EUR':'symbol':'1.2-2':'fr' }}</p>
+            </div>
+            <div class="qte">
+              <button type="button" (click)="panier.retirerUn(l.id)" aria-label="Diminuer">−</button>
+              <span>{{ ligne.quantite }}</span>
+              <button type="button" (click)="panier.ajouter(l.id)" aria-label="Augmenter">+</button>
+            </div>
+            <p class="sous-total">
+              {{ l.prix * ligne.quantite | currency: 'EUR':'symbol':'1.2-2':'fr' }}
+            </p>
+            <button type="button" class="suppr" (click)="panier.supprimer(l.id)" aria-label="Supprimer">
+              ×
+            </button>
+          </li>
+        }
+      }
+    </ul>
+
+    <footer class="total-bar">
+      <div>
+        <span class="label">Total</span>
+        <strong class="montant">{{ panier.totalPrix() | currency: 'EUR':'symbol':'1.2-2':'fr' }}</strong>
+      </div>
+      <button type="button" class="vider" (click)="panier.vider()">Vider le panier</button>
+    </footer>
+  }
+</section>
